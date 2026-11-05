@@ -4,13 +4,16 @@
 // Configuration
 // ===========================================================================
 
-// The port the application listens on.
-const PORT = 3000;
+// The port the application listens on, taken from the PORT environment
+// variable (3000 by default).
+const PORT = process.env.PORT || 3000;
 
-// The URL used to connect to the PostgreSQL database. It has the shape
-// postgresql://USER:PASSWORD@HOST:PORT/DATABASE. Change the password to match
-// the one you set when you ran schema.sql.
-const DATABASE_URL = 'postgresql://guessit:change-me-now@localhost:5432/guessit';
+// The URL used to connect to the PostgreSQL database, taken from the
+// DATABASE_URL environment variable. It has the shape
+// postgresql://USER:PASSWORD@HOST:PORT/DATABASE. The default URL has no
+// password: set DATABASE_URL with the password of the guessit user.
+const DATABASE_URL =
+  process.env.DATABASE_URL || 'postgresql://guessit@localhost:5432/guessit';
 
 // The colour used for the page's accent (buttons, title). Change it if you
 // like a different look.
